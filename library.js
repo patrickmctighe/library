@@ -14,7 +14,6 @@ function Book(title, author, pages, read, data) {
     (this.pages = pages),
     (this.read = read),
     (this.data = data);
-    
 }
 form.addEventListener("submit", function addBookToLibrary(event) {
   const newBook = new Book(
@@ -27,7 +26,10 @@ form.addEventListener("submit", function addBookToLibrary(event) {
   event.preventDefault();
   myLibrary.push(newBook);
   updateArr();
+  form.reset()
 });
+
+
 
 function updateArr() {
   books.innerText = " ";
@@ -35,8 +37,8 @@ function updateArr() {
     let card = document.createElement("div");
     card.setAttribute("class", "card");
 
-    let c0= document.createElement("div")
-    c0.setAttribute("class","c0");
+    let c0 = document.createElement("div");
+    c0.setAttribute("class", "c0");
 
     let c1 = document.createElement("div");
     c1.setAttribute("class", "c1");
@@ -57,9 +59,9 @@ function updateArr() {
     let c5 = document.createElement("div");
     c5.setAttribute("class", "c5");
     card.appendChild(c5);
-    
-    let cardData= document.createTextNode(res.data);
-    c0.appendChild(cardData)
+
+    let cardData = document.createTextNode(res.data);
+    c0.appendChild(cardData);
 
     let cardTitle = document.createTextNode("Title: " + res.title);
     c1.appendChild(cardTitle);
@@ -92,16 +94,14 @@ function updateArr() {
     </span> `;
     dele.addEventListener("click", (e) => {
       if ((e.target = "BUTTON")) {
-        for(let i =0; i<myLibrary.length; i++){
-        if(myLibrary[i].data == c0.innerText){
-          myLibrary.splice(i);
+        for (let i = 0; i < myLibrary.length; i++) {
+          if (myLibrary[i].data == c0.innerText) {
+            myLibrary.splice(i);
+          }
         }
-     
-    ;
-        
-      
-      }books.removeChild(card);
-   }} );
+        books.removeChild(card);
+      }
+    });
     dele.setAttribute("class", "dele");
     c5.appendChild(dele);
 
